@@ -1,16 +1,10 @@
-<h1> Hello Angular World!</h1>
+<div class="container">
+  <h1>Angular Pipes</h1>
 
-<ul style="list-style: none">
-  <li *ngFor="let post of objs">
-    <p>{{post.title}} <b>{{post.author}}</b></p>
-    <ul>
-      <li *ngFor="let comment of post.comments">
-        <div>
-          <small>{{comment.name}}</small>
-          <p>{{comment.text}}</p>
-        </div>
-      </li>
-    </ul>
-  </li>
-
-</ul>
+  <p>{{ 10 | mult }}</p>
+  <p>{{ 10 | mult:2 }}</p>
+  <p>{{ 10 | mult:3 }}</p>
+  <p>{{ 10 | mult:5 }}</p>
+  <p>{{ 10 | mult:8 }}</p>
+  <p>{{ 10 | mult: 13 }}</p>
+</div>
