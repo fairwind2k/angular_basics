@@ -4,7 +4,7 @@ import {Pipe, PipeTransform} from '@angular/core';
   name: 'mult'
 })
 
-// Creating custom pipe ( multiplication expression)
+//  ( multiplication expression)
 
 export class MultByPipe implements PipeTransform {
   transform(num: number, pow: number = 2): number {
