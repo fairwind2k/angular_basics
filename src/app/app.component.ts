@@ -1,9 +1,6 @@
 import {Component} from '@angular/core';
-
-export interface Post {
-  title: string;
-  text: string;
-}
+import {interval, Subscription} from 'rxjs';
+// import {} from 'rxjs/operators'
 
 @Component({
   selector: 'app-root',
@@ -11,21 +8,17 @@ export interface Post {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  sub: Subscription;
 
-  search = '';
-  searchField = 'title';
-
-  posts: Post[] = [
-    {title: 'Beer', text: 'The best beer in the world'},
-    {title: 'Bread', text: 'The best bread in Europe'},
-    {title: 'Javascript', text: 'The best language in the world'},
-  ];
-
-  addPost() {
-    this.posts.unshift({
-      title: 'Angular 8',
-      text: 'Some text'
+  constructor() {
+    const intervalStreams$ = interval(1000);
+    this.sub = intervalStreams$.subscribe((value) => {
+      console.log(value);
     });
-
   }
+
+  stop() {
+    this.sub.unsubscribe();
+  }
+
 }
