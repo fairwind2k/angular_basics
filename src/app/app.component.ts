@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {Subscription, Subject} from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -7,22 +7,26 @@ import {Subscription, Subject} from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  sub: Subscription;
-  stream$: Subject<number> = new Subject<number>();
-  counter = 0;
+export class AppComponent implements OnInit {
 
-  constructor() {
-    this.sub = this.stream$.subscribe(value => {console.log('Subscribe: ', value);
-    });
+  p: Promise<string> = new Promise<string>(resolve => {
+    setTimeout(() => {
+      resolve('Promise resolved');
+    }, 4000);
+  });
+
+  date$: Observable<Date> = new Observable<Date>( obs => {
+    setInterval( () => {
+      obs.next(new Date());
+    }, 1000);
+  });
+
+  date: Date;
+
+  ngOnInit(): void {
+    // this.date$.subscribe( date => {
+    //   this.date = date;
+    // });
   }
 
-  stop() {
-    this.sub.unsubscribe();
-  }
-
-  next() {
-    this.counter++;
-    this.stream$.next(this.counter);
-  }
 }
