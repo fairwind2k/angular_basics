@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
 import {MultByPipe} from './pipes/mult-by.pipe';
 import { ExMarksPipe } from './pipes/ex-marks.pipe';
+import { CounterComponent } from './counter/counter.component';
+
 // import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
@@ -12,13 +14,16 @@ import { ExMarksPipe } from './pipes/ex-marks.pipe';
     AppComponent,
     MultByPipe,
     ExMarksPipe,
+    CounterComponent,
     // FilterPipe
    ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
