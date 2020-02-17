@@ -1,23 +1,58 @@
 <div class="container">
-  <h1>Angular Services</h1>
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <h1>Angular Forms</h1>
 
-  <div class="card">
-    <h2>App Counter: {{appCounterService.counter}}</h2>
+    <div class="form-control">
+      <label>Email</label>
+      <label>
+        <input type="text" placeholder="Email" formControlName="email">
+      </label>
+      <div class="validation"></div>
+    </div>
 
-    <button class="btn" (click)="appCounterService.increase()">+</button>
-    <button class="btn" (click)="appCounterService.decrease()">-</button>
+    <div class="form-control">
+      <label>Password</label>
+      <label>
+        <input type="password" placeholder="Password" formControlName="password">
+      </label>
+      <div class="validation"></div>
+    </div>
 
-  </div>
+    <div class="card">
+      <h2>Address</h2>
 
-  <div class="card">
-    <h2>Local Counter: {{localCounterService.counter}}</h2>
+      <div class="form-control">
+        <label>Country</label>
 
-    <button class="btn" (click)="localCounterService.increase()">+</button>
-    <button class="btn" (click)="localCounterService.decrease()">-</button>
+        <label>
+          <select>
+            <option value="ru">Russia</option>
+            <option value="ua">Ukraine</option>
+            <option value="by">Netherlands</option>
+          </select>
+        </label>
+      </div>
 
-  </div>
+      <div class="form-control">
+        <label>
+          <input type="text">
+        </label>
+      </div>
 
-  <hr>
-  <app-counter> </app-counter>
+      <button class="btn" type="button">Choose city</button>
+    </div>
 
+    <div class="card">
+      <h2>Your skills</h2>
+      <button class="btn" type="button">Add skill</button>
+      <div class="form-control">
+        <label></label>
+        <label>
+          <input type="text">
+        </label>
+      </div>
+    </div>
+
+    <button class="btn" type="submit">Send</button>
+  </form>
 </div>
