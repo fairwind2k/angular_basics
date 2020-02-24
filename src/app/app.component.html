@@ -7,39 +7,67 @@
       <label>
         <input type="text" placeholder="Email" formControlName="email">
       </label>
-      <div class="validation"></div>
+
+      <div
+        *ngIf="form.get('email').invalid && form.get('email').touched"
+        class="validation"
+      >
+        <small *ngIf="form.get('email').errors.required">
+          Email is required.
+        </small>
+
+        <small *ngIf="form.get('email').errors.email">
+          Enter a valid email.
+        </small>
+      </div>
+
     </div>
+
+<!--    <pre>{{form.get('password').errors | json}}</pre>-->
 
     <div class="form-control">
       <label>Password</label>
       <label>
         <input type="password" placeholder="Password" formControlName="password">
       </label>
-      <div class="validation"></div>
+      <div
+        *ngIf="form.get('password').invalid && form.get('password').touched"
+        class="validation"
+      >
+        <small *ngIf="form.get('password').errors.required">
+          Password is required.
+        </small>
+
+        <small *ngIf="form.get('password').errors.minlength">
+          Password must be at least {{form.get('password').errors.minlength.requiredLength}} characters long.
+          Now password has {{form.get('password').errors.minlength.actualLength}} characters.
+        </small>
+
+      </div>
     </div>
 
-    <div class="card">
+    <div class="card" formGroupName="address">
       <h2>Address</h2>
 
       <div class="form-control">
         <label>Country</label>
 
         <label>
-          <select>
+          <select formControlName="country">
             <option value="ru">Russia</option>
             <option value="ua">Ukraine</option>
-            <option value="by">Netherlands</option>
+            <option value="nl">Netherlands</option>
           </select>
         </label>
       </div>
 
       <div class="form-control">
         <label>
-          <input type="text">
+          <input type="text" formControlName="city" placeholder="City">
         </label>
       </div>
 
-      <button class="btn" type="button">Choose city</button>
+      <button class="btn" type="button" (click)="setCapital()" >Choose city</button>
     </div>
 
     <div class="card">
